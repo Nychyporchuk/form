@@ -1,0 +1,236 @@
+* {
+    padding: 0;
+    /*margin: 0;*/
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url("../fonts/Nunito-Bold.woff");
+}
+
+
+body {
+    background:linear-gradient(to right, #FFFFFB 50%, #e5e5e5 50%);
+    font-family: Nunito, sans-serif;
+  font-weight: bold;
+
+}
+
+
+.container {
+    display: flex;
+     justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 194px 0 0 20px;
+    flex-wrap: wrap;
+
+}
+
+
+.logo {
+
+
+    text-align: center;
+    margin:0 auto;
+    padding-top: 27px;
+
+}
+
+.main-info {
+
+
+}
+
+.main-title {
+
+    color: #000;
+    font-size: 36px;
+    margin-bottom: 7px;
+}
+
+.main-trial-info {
+    max-width: 452px;
+    width: 100%;
+    height: 56px;
+    color: #636363;
+    font-size: 22px;
+    line-height: 27px;
+    margin-bottom: 42px;
+}
+
+.RegistrationForm, .SignInForm {
+    display: flex;
+    flex-direction: column;
+    max-width: 452px;
+    width: 100%;
+}
+
+.registration-form-input {
+    display: flex;
+    flex-direction: column;
+    max-width: 452px;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.registration-form-input input::placeholder {
+    color: #323232;
+    font-size: 20px;
+    line-height: 27px;
+    font-family: Nunito, sans-serif;
+    font-weight: bold;
+}
+
+.registration-form-input label {
+    color: #C6C6C4;
+    font-size: 16px;
+    line-height: 27px;
+}
+
+.registration-form-input input {
+    color: #323232;
+    font-size: 20px;
+    line-height: 27px;
+    border: none;
+    border-bottom: 1px solid #C6C6C4;
+    outline: none;
+
+}
+
+.input-checkbox {
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+label {
+    color: #636363;
+    font-size: 16px;
+    line-height: 27px;
+    max-width: 413px;
+    width: 100%;
+
+}
+
+.btn {
+    text-align: center;
+    margin-bottom: 44px;
+}
+
+.button {
+    width: 210px;
+    height: 70px;
+    border-radius: 40px;
+    background: #DD3142;
+    padding: 21px 21px 25px 21px;
+    box-sizing: border-box;
+    color: #FFF;
+    font-size: 20px;
+    border: 0;
+    cursor: pointer;
+    outline: none;
+}
+
+.have-account {
+    text-align: center;
+}
+
+.have-account a {
+    color: #636363;
+    font-size: 16px;
+
+    text-decoration: none;
+}
+
+.main-image-container {
+
+}
+
+.main-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 20% auto;
+    padding: 20px;
+    /*border: 1px solid rgba(61, 61, 61, 0.84);*/
+    border: 1px solid rgba(75, 72, 70, 0.25);
+    border-radius: 10px;
+    max-width: 500px;
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#okButton {
+    background-color: #19b2b8;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#okButton:hover {
+    background-color: #34cece;
+}
+.SignInForm {
+    display: none;
+}
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.personal-cabinet {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.personal-cabinet h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.personal-cabinet .button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
