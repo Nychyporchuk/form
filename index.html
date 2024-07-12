@@ -1,105 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>KR8</title>-->
-<!--    <link rel="stylesheet" href="styles/style.css">-->
-<!--     <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--</head>-->
-<!--<body>-->
-<!--<div class="logo"><img src="images/homeWorks.png" alt="Logo"></div>-->
-<!--<div class="container">-->
-
-
-<!--    <div class="main-info">-->
-<!--        <div class="main-title">Get your free account</div>-->
-<!--        <div class="main-trial-info">-->
-<!--            Try homeWorks BUSINESS free for 15 days. Downgrade to Basic (Free Forever) anytime.-->
-<!--        </div>-->
-<!--        <form class="RegistrationForm" id="registration-form">-->
-<!--            <div class="registration-form-input">-->
-<!--                <label for='fullname'>Full Name</label>-->
-<!--                <input type='text' id='fullname' name='fullname' placeholder="Antony Swarowski">-->
-<!--            </div>-->
-<!--            <div class="registration-form-input">-->
-<!--                <label for='username'>Your username</label>-->
-<!--                <input type='text' id='username' name='username'>-->
-<!--            </div>-->
-<!--            <div class="registration-form-input">-->
-<!--                <label for='e-mail'>E-mail</label>-->
-<!--                <input type='text' id='e-mail' name='e-mail'>-->
-<!--            </div>-->
-<!--            <div class="registration-form-input">-->
-
-<!--                    <label for='password'>Password</label>-->
-<!--                    <input type='password' id='password' name='password'>-->
-
-
-
-<!--            </div>-->
-<!--            <div class="registration-form-input">-->
-<!--                <label for='repeat-password'>Repeat Password</label>-->
-<!--                <input type='password' id='repeat-password' name='repeat-password'>-->
-<!--            </div>-->
-
-<!--            <div class="input-checkbox">-->
-<!--                <input type="checkbox" id="input-checkbox" checked="checked" />-->
-<!--                <label for="input-checkbox">Agree to our Terms of Service and Privacy Statement</label>-->
-<!--            </div>-->
-
-
-<!--            <div class="btn">-->
-<!--                <button type="submit" class="button" id="button">-->
-<!--                    Sign Up-->
-<!--                </button>-->
-<!--            </div>-->
-<!--            <div class="have-account">-->
-<!--                <a href="#">Already have an account?</a>-->
-<!--            </div>-->
-<!--        </form>-->
-<!--        <form class="SignInForm" id="signin-form" >-->
-<!--            <div class="registration-form-input">-->
-<!--                <label for='signin-username'>Username</label>-->
-<!--                <input type='text' id='signin-username' name='signin-username'>-->
-<!--            </div>-->
-<!--            <div class="registration-form-input">-->
-<!--                <label for='signin-password'>Password</label>-->
-<!--                <input type='password' id='signin-password' name='signin-password'>-->
-<!--            </div>-->
-<!--            <div class="btn">-->
-<!--                <button type="submit" class="button" id="sign-in-button">-->
-<!--                    Sign In-->
-<!--                </button>-->
-<!--            </div>-->
-<!--            <div class="have-account">-->
-<!--                <a href="#" id="switch-to-signup">Create a new account</a>-->
-<!--            </div>-->
-<!--        </form>-->
-
-<!--        -->
-
-
-<!--    </div >-->
-<!--    <div class="main-image-container">-->
-<!--    <div class="main-image"><img src="images/image.png" alt="up to stars"></div>-->
-
-<!--    </div>-->
-<!--</div>-->
-
-<!--<div id="myModal" class="modal">-->
-<!--    <div class="modal-content">-->
-<!--        <span class="close">&times;</span>-->
-<!--        <p>На вашу почту выслана ссылка, перейдите по ней, чтобы завершить регистрацию</p>-->
-<!--        <button id="okButton">OK</button>-->
-<!--    </div>-->
-<!--</div>-->
-
-
-
-
-<!--<script src="script.js"></script>-->
-<!--</body>-->
-<!--</html>-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -119,7 +17,7 @@
         <form class="RegistrationForm" id="registration-form">
             <div class="registration-form-input">
                 <label for="fullname">Full Name</label>
-                <input type="text" id="fullname" name="fullname" placeholder="Antony Swarowski">
+                <input type="text" id="fullname" name="fullname" placeholder="">
                 <span class="error-message" id="fullname-error"></span>
             </div>
             <div class="registration-form-input">
@@ -130,7 +28,7 @@
             <div class="registration-form-input">
                 <label for="e-mail">E-mail</label>
                 <input type="text" id="e-mail" name="e-mail">
-                <span class="error-message" id="email-error"></span>
+                <span class="error-message" id="e-mail-error"></span>
             </div>
             <div class="registration-form-input">
                 <label for="password">Password</label>
@@ -184,7 +82,7 @@
 <div id="myModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
-        <p>На вашу почту выслана ссылка, перейдите по ней, чтобы завершить регистрацию</p>
+        <p id="modal-message"></p>
         <button id="okButton">OK</button>
     </div>
 </div>

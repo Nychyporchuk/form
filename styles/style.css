@@ -10,16 +10,16 @@
 
 
 body {
-    background:linear-gradient(to right, #FFFFFB 50%, #e5e5e5 50%);
+    background: linear-gradient(to right, #FFFFFB 50%, #e5e5e5 50%);
     font-family: Nunito, sans-serif;
-  font-weight: bold;
+    font-weight: bold;
 
 }
 
 
 .container {
     display: flex;
-     justify-content: center;
+    justify-content: center;
     align-items: center;
     width: 100%;
     max-width: 1200px;
@@ -34,7 +34,7 @@ body {
 
 
     text-align: center;
-    margin:0 auto;
+    margin: 0 auto;
     padding-top: 27px;
 
 }
@@ -73,14 +73,13 @@ body {
     flex-direction: column;
     max-width: 452px;
     width: 100%;
-    height: 50px;
     margin-bottom: 20px;
 }
 
 .registration-form-input input::placeholder {
     color: #323232;
     font-size: 20px;
-    line-height: 27px;
+    line-height: 24px;
     font-family: Nunito, sans-serif;
     font-weight: bold;
 }
@@ -155,8 +154,6 @@ label {
 }
 
 
-
-
 .modal {
     display: none;
     position: fixed;
@@ -165,7 +162,7 @@ label {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
@@ -210,9 +207,11 @@ label {
 #okButton:hover {
     background-color: #34cece;
 }
+
 .SignInForm {
     display: none;
 }
+
 .error-message {
     color: red;
     font-size: 14px;

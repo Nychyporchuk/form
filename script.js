@@ -6,6 +6,30 @@ document.addEventListener("DOMContentLoaded", function () {
     let exitButton = document.getElementById('exit-button');
     let haveAccountLink = document.getElementById('have-account-link');
     let registerLink = document.getElementById('register-link');
+    let modal = document.getElementById("myModal");
+    let modalMessage = document.getElementById("modal-message");
+    let span = document.getElementsByClassName("close")[0];
+    let okButton = document.getElementById("okButton");
+
+    function showModal(message) {
+        modalMessage.textContent = message;
+        modal.style.display = "block";
+    }
+
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    okButton.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    }
+
 
     function validateEmail(email) {
         let re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -23,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function validatePassword(password) {
-        let re = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        let re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^\w\s]).{8,}/;
         return re.test(password);
     }
 
@@ -52,36 +76,51 @@ document.addEventListener("DOMContentLoaded", function () {
         let agreeCheckbox = document.getElementById('input-checkbox');
 
         let isValid = true;
-
-        if (fullNameInput.value.trim() === '' || !validateFullName(fullNameInput.value.trim())) {
+        if (fullNameInput.value.trim() === '') {
+            setError(fullNameInput, ' Заполните поле Full Name ');
+            isValid = false;
+        } else if (!validateFullName(fullNameInput.value.trim())) {
             setError(fullNameInput, 'Full Name может содержать только буквы и пробел');
             isValid = false;
         } else {
             clearError(fullNameInput);
         }
 
-        if (usernameInput.value.trim() === '' || !validateUsername(usernameInput.value.trim())) {
+
+        if (usernameInput.value.trim() === '') {
+            setError(usernameInput, 'Заполните поле Username');
+            isValid = false;
+        } else if (!validateUsername(usernameInput.value.trim())) {
             setError(usernameInput, 'Username может содержать только буквы, цифры, символ подчеркивания и тире');
             isValid = false;
         } else {
             clearError(usernameInput);
         }
 
-        if (emailInput.value.trim() === '' || !validateEmail(emailInput.value.trim())) {
+        if (emailInput.value.trim() === '') {
+            setError(emailInput, 'Заполните поле E-mail');
+            isValid = false;
+        } else if (!validateEmail(emailInput.value.trim())) {
             setError(emailInput, 'Введите корректный E-mail');
             isValid = false;
         } else {
             clearError(emailInput);
         }
 
-        if (passwordInput.value === '' || !validatePassword(passwordInput.value)) {
+        if (passwordInput.value === '') {
+            setError(passwordInput, 'Заполните поле Password');
+            isValid = false;
+        } else if (!validatePassword(passwordInput.value)) {
             setError(passwordInput, 'Пароль должен содержать минимум 8 символов, включая хотя бы одну букву в верхнем регистре, одну цифру и один спецсимвол');
             isValid = false;
         } else {
             clearError(passwordInput);
         }
 
-        if (repeatPasswordInput.value === '' || repeatPasswordInput.value !== passwordInput.value) {
+        if (repeatPasswordInput.value === '') {
+            setError(repeatPasswordInput, 'Заполните поле Repeat Password');
+            isValid = false;
+        } else if (repeatPasswordInput.value !== passwordInput.value) {
             setError(repeatPasswordInput, 'Пароли не совпадают');
             isValid = false;
         } else {
@@ -89,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (!agreeCheckbox.checked) {
-            setError(agreeCheckbox, 'Вы должны согласиться с условиями');
+            showModal('Вы должны согласиться с условиями');
             isValid = false;
         } else {
             clearError(agreeCheckbox);
@@ -121,32 +160,67 @@ document.addEventListener("DOMContentLoaded", function () {
         clients.push(user);
         localStorage.setItem('clients', JSON.stringify(clients));
 
-        alert('На вашу почту выслана ссылка, перейдите по ней, чтобы завершить регистрацию');
+        showModal('На вашу почту выслана ссылка, перейдите по ней, чтобы завершить регистрацию');
         showSignInForm();
+
     }
 
     function signInButtonClickHandler(event) {
         event.preventDefault();
 
-        let usernameValue = document.getElementById('signin-username').value.trim();
-        let passwordValue = document.getElementById('signin-password').value.trim();
+        let usernameInput = document.getElementById('signin-username');
+        let passwordInput = document.getElementById('signin-password');
+        let usernameValue = usernameInput.value.trim();
+        let passwordValue = passwordInput.value.trim();
 
-        if (usernameValue === '' || passwordValue === '') {
-            alert('Заполните все поля!');
+        let isValid = true;
+
+
+        if (usernameValue === '') {
+            setError(usernameInput, 'Заполните поле Username');
+            isValid = false;
+        } else {
+            clearError(usernameInput);
+        }
+
+        if (!isValid) {
             return;
         }
 
+
         let clients = JSON.parse(localStorage.getItem('clients')) || [];
+        if (clients.length === 0) {
+            setError(usernameInput, 'Такой пользователь не зарегистрирован');
+            return;
+        }
+
+
         let user = clients.find(client => client.username === usernameValue);
 
         if (!user) {
-            setError(document.getElementById('signin-username'), 'Такой пользователь не зарегистрирован');
+            setError(usernameInput, 'Такой пользователь не зарегистрирован');
+            return;
+        } else {
+            clearError(usernameInput);
+        }
+
+        if (passwordValue === '') {
+            setError(passwordInput, 'Заполните поле Пароль');
+            isValid = false;
+        } else {
+            clearError(passwordInput);
+        }
+
+        if (!isValid) {
             return;
         }
 
+
         if (user.password !== passwordValue) {
-            setError(document.getElementById('signin-password'), 'Неверный пароль');
+            setError(passwordInput, 'Неверный пароль');
             return;
+        } else {
+            clearError(passwordInput);
         }
 
 
@@ -165,22 +239,16 @@ document.addEventListener("DOMContentLoaded", function () {
     function showSignInForm() {
         signUpForm.style.display = 'none';
         signinForm.style.display = 'block';
-        haveAccountLink.textContent = 'Registration';
-        haveAccountLink.removeEventListener('click', showSignInForm);
-        haveAccountLink.addEventListener('click', showSignUpForm);
+
     }
 
-    function showSignUpForm() {
-        signinForm.style.display = 'none';
-        signUpForm.style.display = 'block';
-    }
 
-    haveAccountLink.addEventListener('click', function(event) {
+    haveAccountLink.addEventListener('click', function (event) {
         event.preventDefault();
         showSignInForm();
     });
 
-    registerLink.addEventListener('click', function(event) {
+    registerLink.addEventListener('click', function (event) {
         event.preventDefault();
         location.reload();
     });
