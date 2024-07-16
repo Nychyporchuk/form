@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (!agreeCheckbox.checked) {
-            showModal('Вы должны согласиться с условиями');
+            setError(agreeCheckbox,'Вы должны согласиться с условиями');
             isValid = false;
         } else {
             clearError(agreeCheckbox);
@@ -155,10 +155,10 @@ document.addEventListener("DOMContentLoaded", function () {
             email: emailInput.value.trim(),
             password: passwordInput.value.trim()
         };
-
         let clients = JSON.parse(localStorage.getItem('clients')) || [];
         clients.push(user);
         localStorage.setItem('clients', JSON.stringify(clients));
+
 
         showModal('На вашу почту выслана ссылка, перейдите по ней, чтобы завершить регистрацию');
         showSignInForm();
@@ -183,16 +183,19 @@ document.addEventListener("DOMContentLoaded", function () {
             clearError(usernameInput);
         }
 
+        if (passwordValue === '') {
+            setError(passwordInput, 'Заполните поле Пароль');
+            isValid = false;
+        } else {
+            clearError(passwordInput);
+        }
+
+
         if (!isValid) {
             return;
         }
 
-
         let clients = JSON.parse(localStorage.getItem('clients')) || [];
-        if (clients.length === 0) {
-            setError(usernameInput, 'Такой пользователь не зарегистрирован');
-            return;
-        }
 
 
         let user = clients.find(client => client.username === usernameValue);
@@ -202,17 +205,6 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         } else {
             clearError(usernameInput);
-        }
-
-        if (passwordValue === '') {
-            setError(passwordInput, 'Заполните поле Пароль');
-            isValid = false;
-        } else {
-            clearError(passwordInput);
-        }
-
-        if (!isValid) {
-            return;
         }
 
 
