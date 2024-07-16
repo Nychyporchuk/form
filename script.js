@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let modalMessage = document.getElementById("modal-message");
     let span = document.getElementsByClassName("close")[0];
     let okButton = document.getElementById("okButton");
+    let clients = JSON.parse(localStorage.getItem('clients')) || [];
 
     function showModal(message) {
         modalMessage.textContent = message;
@@ -155,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
             email: emailInput.value.trim(),
             password: passwordInput.value.trim()
         };
-        let clients = JSON.parse(localStorage.getItem('clients')) || [];
+        // let clients = JSON.parse(localStorage.getItem('clients')) || [];
         clients.push(user);
         localStorage.setItem('clients', JSON.stringify(clients));
 
@@ -195,7 +196,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        let clients = JSON.parse(localStorage.getItem('clients')) || [];
+
 
 
         let user = clients.find(client => client.username === usernameValue);
